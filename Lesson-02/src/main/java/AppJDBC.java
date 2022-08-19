@@ -1,9 +1,9 @@
 import controller.Controller;
 
-public class Main {
+public class AppJDBC {
     public static void main(String[] args) {
 
-        new Main().run();
+        new AppJDBC().run();
 
     }
 

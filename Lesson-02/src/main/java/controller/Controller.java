@@ -6,24 +6,26 @@ import factory.StudentFactory;
 import java.sql.*;
 
 public class Controller {
-  private String URL ="jdbc:h2:mem:test";
+  private final String URL ="jdbc:h2:mem:new";
     private Connection connection;
-    private String user ="user";
-    private String password = "1";
+    private final String user ="user";
+    private final String password = "user";
 
     public void addTable() {
         try {
             connection = DriverManager.getConnection(URL,user,password);
             Statement statement = connection.createStatement();
-            String s = "create table STUDENTS\n" +
-                    "(\n" +
-                    "    ID      INT auto_increment,\n" +
-                    "    NAME    VARCHAR,\n" +
-                    "    SURNAME VARCHAR,\n" +
-                    "    AGE     INTEGER,\n" +
-                    "    constraint STUDENTS_PK\n" +
-                    "        primary key (ID)\n" +
-                    ");\n";
+            String s = """
+                    create table STUDENTS
+                    (
+                        ID      INT auto_increment,
+                        NAME    VARCHAR,
+                        SURNAME VARCHAR,
+                        AGE     INTEGER,
+                        constraint STUDENTS_PK
+                            primary key (ID)
+                    );
+                    """;
             statement.execute(s);
 
         } catch (SQLException e) {
